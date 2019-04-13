@@ -1,3 +1,5 @@
+// @flow
+
 /**
  * SEO component that queries for data with
  *  Gatsby's useStaticQuery React hook
@@ -6,11 +8,19 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, keywords, title }) {
+type Props = {
+  description: string,
+  lang: string,
+  meta: [string],
+  keywords: string,
+  title: string,
+}
+
+function SEO(props: Props): React.ReactNode {
+  const { description, lang, meta, keywords, title } = props
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -19,12 +29,12 @@ function SEO({ description, lang, meta, keywords, title }) {
             title
             description
             author
+            avatar
           }
         }
       }
     `
   )
-
   const metaDescription = description || site.siteMetadata.description
 
   return (
@@ -46,6 +56,22 @@ function SEO({ description, lang, meta, keywords, title }) {
         {
           property: `og:description`,
           content: metaDescription,
+        },
+        {
+          property: `og:image`,
+          content: site.siteMetadata.avatar,
+        },
+        {
+          property: `og:image:type`,
+          content: "image/jpeg",
+        },
+        {
+          property: `og:image:width`,
+          content: "600",
+        },
+        {
+          property: `og:image:height`,
+          content: "400",
         },
         {
           property: `og:type`,
@@ -71,9 +97,9 @@ function SEO({ description, lang, meta, keywords, title }) {
         .concat(
           keywords.length > 0
             ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
+              name: `keywords`,
+              content: keywords.join(`, `),
+            }
             : []
         )
         .concat(meta)}
@@ -83,17 +109,26 @@ function SEO({ description, lang, meta, keywords, title }) {
 
 SEO.defaultProps = {
   lang: `en`,
+  keywords: [
+    "El Palote",
+    "vegan",
+    "food",
+    "vegan food",
+    "dallas",
+    "dallas vegan",
+    "mexican",
+    "mexican food",
+    "vegan mexican food",
+    "dallas mexican food",
+    "family owned",
+    "vegan meats",
+    "meats",
+    "texas vegan",
+    "texas",
+    "good food",
+  ],
   meta: [],
-  keywords: [],
-  description: ``,
+  title: "El Palote Foods",
 }
 
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
-}
-
-export default SEO
+export default React.memo(SEO)
