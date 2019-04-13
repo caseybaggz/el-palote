@@ -2,10 +2,17 @@
 
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import Header from "./header"
+import Footer from './footer'
 import GlobalStyle from "../theme/GlobalStyle"
 import mainTheme from "../theme/mainTheme"
+
+const Content = styled.div`
+  background-color: lightGrey;
+  padding-top: 88px;
+  min-height: 80vh;
+`;
 
 type Props = {
   children?: React.node
@@ -28,14 +35,8 @@ function Layout(props: Props): React.Node {
           <>
             <GlobalStyle />
             <Header siteTitle={data.site.siteMetadata.title} />
-
-            <div>{props.children}</div>
-
-            <footer>
-              © {new Date().getFullYear()}, Built with
-              {` `}
-              <a href="https://www.gatsbyjs.org">Gatsby</a>
-            </footer>
+            <Content>{props.children}</Content>
+            <Footer />
           </>
         </ThemeProvider>
       )}
