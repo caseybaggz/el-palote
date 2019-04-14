@@ -3,7 +3,7 @@ module.exports = {
     title: `El Palote Foods`,
     description: `The official site for the first authentic vegan mexican food family-owned restaurant in the world, based out of Dallas, Texas.`,
     author: `@elpalote`,
-    avatar: ''
+    avatar: "",
   },
   plugins: [
     // this (optional) plugin enables Progressive Web App + Offline functionality
@@ -26,13 +26,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `El Palote`,
+        short_name: `el palote`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#1C1714`,
+        theme_color: `#1C1714`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     {
