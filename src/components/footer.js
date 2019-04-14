@@ -1,14 +1,14 @@
 // @flow
 
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'gatsby'
-import Logo from './Logo'
-import Row from './Row'
-import H5 from './typography/H5'
-import Instagram from './icons/social/instagram'
-import Twitter from './icons/social/twitter'
-import media from '../theme/media'
+import React from "react"
+import styled from "styled-components"
+import Logo from "./Logo"
+import Row from "./Row"
+import TextLink from "./TextLink"
+import H5 from "./typography/H5"
+import Instagram from "./icons/social/instagram"
+import Twitter from "./icons/social/twitter"
+import media from "../theme/media"
 
 const Wrapper = styled.footer`
   background-color: rgba(28, 23, 20, 0.95);
@@ -66,6 +66,15 @@ const SectionList = styled.ul`
   }
 `
 
+const ListItem = styled.li`
+  margin-top: 24px;
+  text-align: center;
+
+  ${media.tablet} {
+    text-align: initial;
+  }
+`
+
 const SocialList = styled(Row)`
   justify-content: center;
   list-style: none;
@@ -109,30 +118,32 @@ const socialData: [
   {
     id: number,
     url: string,
-    icon: React.Node
+    icon: React.Node,
   },
   {
     id: number,
     url: string,
-    icon: React.Node
-  }
+    icon: React.Node,
+  },
 ] = [
   {
     id: 0,
-    url: 'https://twitter.com/@elpalote',
-    icon: Twitter
+    url: "https://twitter.com/@elpalote",
+    icon: Twitter,
   },
   {
     id: 1,
-    url: 'https://www.instagram.com/elpalote.vegan/?hl=en',
-    icon: Instagram
-  }
-];
+    url: "https://www.instagram.com/elpalote.vegan/?hl=en",
+    icon: Instagram,
+  },
+]
 
-type Props = {};
+type Props = {}
 
 function Footer(props: Props): React.Node {
-  const socialIcons: React.Node = React.useMemo(() => getSocialLinks(), [socialData]);
+  const socialIcons: React.Node = React.useMemo(() => getSocialLinks(), [
+    socialData,
+  ])
 
   function getSocialLinks(): React.Node {
     return socialData.map(obj => (
@@ -141,10 +152,10 @@ function Footer(props: Props): React.Node {
           <obj.icon />
         </a>
       </li>
-    ));
+    ))
   }
 
-  return(
+  return (
     <Wrapper>
       <FooterRow>
         <Logo color="lightText" />
@@ -154,19 +165,35 @@ function Footer(props: Props): React.Node {
             <li>
               <FooterSectionHeadline>visit and eat</FooterSectionHeadline>
             </li>
-            {[]}
+            <ListItem>
+              <TextLink to="/locations">Locations</TextLink>
+            </ListItem>
+          </SectionList>
+
+          <SectionList>
+            <li>
+              <FooterSectionHeadline>our company</FooterSectionHeadline>
+            </li>
+          </SectionList>
+
+          <SectionList>
+            <li>
+              <FooterSectionHeadline>questions</FooterSectionHeadline>
+            </li>
+          </SectionList>
+
+          <SectionList>
+            <li>
+              <FooterSectionHeadline>serve el palote</FooterSectionHeadline>
+            </li>
           </SectionList>
         </FooterSectionRow>
 
-        <SocialList as="ul">
-          {socialIcons}
-        </SocialList>
+        <SocialList as="ul">{socialIcons}</SocialList>
       </FooterRow>
-      <Legal>
-        &copy; Copyright 2019 El Palote
-      </Legal>
+      <Legal>&copy; Copyright 2019 El Palote</Legal>
     </Wrapper>
-  );
+  )
 }
 
-export default React.memo(Footer);
+export default React.memo(Footer)
