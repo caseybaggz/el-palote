@@ -11,8 +11,18 @@ export default {
   white,
   pureWhite: '#ffffff',
 
-  primary: '#DB593A',
+  primary: '#F44336',
+  primaryLight: '#FFCDD2',
+  primaryDark: '#D32F2F',
+  accent1: '#FFEB3B',
+  accent2: '#3F51B5',
+  accent3: '#8BC34A',
 
   lightText: white,
-  darkText: black
+  darkText: black,
+  secondaryText: '#757575',
+
+  success: '#4CAF50',
+  warning: '#FBC02D',
+  danger: '#FF5252'
 }
