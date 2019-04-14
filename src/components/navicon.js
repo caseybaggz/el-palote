@@ -70,19 +70,27 @@ const Bars = styled.div`
 `
 
 type Props = {
-  onOpenNav: () => {}
+  onOpenNav: () => boolean
 };
 
 function Navicon(props: Props): React.Node {
+  function handleClick() {
+    props.onOpenNav(true);
+  }
+
   return(
     <Wrapper>
-      <Button onClick={props.onOpenNav}>
+      <Button onClick={handleClick}>
         <Icon>
           <Bars />
         </Icon>
       </Button>
     </Wrapper>
   );
+}
+
+Navicon.defaultProps = {
+  onOpenNav: () => {}
 }
 
 export default React.memo(Navicon)
