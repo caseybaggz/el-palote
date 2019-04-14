@@ -17,23 +17,21 @@ const HeaderEl = styled.header`
 `
 
 type Props = {
-  siteTitle: string,
+  showMobileNav: () => boolean,
+  siteTitle: string
 }
 
 function Header(props: Props): React.Node {
-  function handleOpenNav() {
-    console.log('open nav');
-  }
-
   return (
     <HeaderEl>
-      <Navicon onOpenNav={handleOpenNav} />
+      <Navicon onOpenNav={props.showMobileNav} />
       <Logo />
     </HeaderEl>
   )
 }
 
 Header.defaultProps = {
+  showMobileNav: () => {},
   siteTitle: ``,
 }
 
