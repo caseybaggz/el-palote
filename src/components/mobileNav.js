@@ -2,7 +2,7 @@
 
 import React from "react"
 import styled, { keyframes } from "styled-components"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Logo from "./Logo"
 
 const fadeIn = keyframes`
@@ -85,41 +85,31 @@ const NavLink = styled(Link)`
   }
 `
 
-const navData = [
-  {
-    id: 0,
-    label: "menu",
-    to: "/menu",
-  },
-  {
-    id: 1,
-    label: "locations",
-    to: "/locations",
-  },
-  // {
-  //   id: 3,
-  //   label: "catering",
-  //   to: "/catering",
-  // },
-  // {
-  //   id: 4,
-  //   label: "merch",
-  //   to: "/merch",
-  // },
-]
-
 type Props = {
   onClose: () => boolean,
 }
 
 function MobileNav(props: Props): React.Node {
-  const navItems: React.Node = React.useMemo(() => getNavItems(), [navData])
+  const data = useStaticQuery(graphql`
+    query MobileNavQuery {
+      allNavItemsJson {
+        edges {
+          node {
+            id
+            label
+            route
+          }
+        }
+      }
+    }
+  `)
+  const navItems: React.Node = React.useMemo(() => getNavItems(), [data])
 
   function getNavItems(): React.Node {
-    return navData.map(obj => (
-      <li key={obj.id}>
-        <NavLink activeClassName="active" to={obj.to}>
-          {obj.label}
+    return data.allNavItemsJson.edges.map(obj => (
+      <li key={obj.node.id}>
+        <NavLink activeClassName="active" to={obj.node.route}>
+          {obj.node.label}
         </NavLink>
       </li>
     ))
