@@ -5,6 +5,7 @@ import styled from "styled-components"
 import Logo from "./Logo"
 import Row from "./Row"
 import TextLink from "./TextLink"
+import Body2 from "./typography/Body2"
 import H5 from "./typography/H5"
 import Instagram from "./icons/social/instagram"
 import Twitter from "./icons/social/twitter"
@@ -103,7 +104,6 @@ const SocialList = styled(Row)`
 const Legal = styled.div`
   align-items: center;
   background-color: ${props => props.theme.black};
-  color: ${props => props.theme.lightText};
   display: flex;
   justify-content: center;
   padding: 22px;
@@ -112,6 +112,10 @@ const Legal = styled.div`
     padding-left: 102px;
     padding-right: 102px;
   }
+`
+
+const Copyright = styled(Body2)`
+  color: ${props => props.theme.lightText};
 `
 
 const socialData: [
@@ -191,7 +195,9 @@ function Footer(props: Props): React.Node {
 
         <SocialList as="ul">{socialIcons}</SocialList>
       </FooterRow>
-      <Legal>&copy; Copyright 2019 El Palote</Legal>
+      <Legal>
+        <Copyright>&copy; Copyright 2019 El Palote</Copyright>
+      </Legal>
     </Wrapper>
   )
 }

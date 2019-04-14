@@ -13,12 +13,22 @@ module.exports = {
     "gatsby-plugin-offline",
     `gatsby-plugin-flow`,
     `gatsby-plugin-styled-components`,
+    `gatsby-transformer-json`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data`,
+        ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
     `gatsby-transformer-sharp`,
