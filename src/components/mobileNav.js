@@ -91,7 +91,7 @@ type Props = {
 
 function MobileNav(props: Props): React.Node {
   const data = useStaticQuery(graphql`
-    query MobileNavQuery {
+    query NavItemsQuery {
       allNavItemsJson {
         edges {
           node {
