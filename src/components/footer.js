@@ -1,6 +1,7 @@
 // @flow
 
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import Logo from "./Logo"
 import Row from "./Row"
@@ -145,9 +146,34 @@ const socialData: [
 type Props = {}
 
 function Footer(props: Props): React.Node {
+  const data = useStaticQuery(graphql`
+    query FooterQuery {
+      allVisitAndEatJson {
+        edges {
+          node {
+            id
+            label
+            url
+          }
+        }
+      }
+    }
+  `)
+  const visitAndEatLinks: React.Node = React.useMemo(
+    () => getvisitAndEatLinks(),
+    [data]
+  )
   const socialIcons: React.Node = React.useMemo(() => getSocialLinks(), [
     socialData,
   ])
+
+  function getvisitAndEatLinks(): React.Node {
+    return data.allVisitAndEatJson.edges.map(obj => (
+      <ListItem key={obj.node.id}>
+        <TextLink to={obj.node.url}>{obj.node.label}</TextLink>
+      </ListItem>
+    ))
+  }
 
   function getSocialLinks(): React.Node {
     return socialData.map(obj => (
@@ -169,9 +195,7 @@ function Footer(props: Props): React.Node {
             <li>
               <FooterSectionHeadline>visit and eat</FooterSectionHeadline>
             </li>
-            <ListItem>
-              <TextLink to="/locations">Locations</TextLink>
-            </ListItem>
+            {visitAndEatLinks}
           </SectionList>
 
           <SectionList>
