@@ -10,8 +10,7 @@ import GlobalStyle from "../theme/GlobalStyle"
 import mainTheme from "../theme/mainTheme"
 
 const Content = styled.div`
-  background-color: lightGrey;
-  padding-top: 88px;
+  padding-top: 76.02px;
   min-height: 80vh;
 `
 
