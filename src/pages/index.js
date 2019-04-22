@@ -5,6 +5,7 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Image from "../components/image"
+import DescriptionSection from "../components/descriptionSection"
 import H4 from "../components/typography/H4"
 import H6 from "../components/typography/H6"
 
@@ -44,6 +45,17 @@ const indexPage: React.node = (
       </StatementGroup>
       <Image />
     </Feature>
+
+    <DescriptionSection
+      secondaryHeadline="from"
+      headline="family to table"
+      to="/menu"
+    >
+      It all started with a life-changing event from Papa. Instead of
+      giving up, we asked "How can we keep our tradition of mexican food, and
+      make it better for everyone?" The answer was right in front of us
+      the whole time - with plants.
+    </DescriptionSection>
   </Layout>
 )
 
