@@ -26,11 +26,10 @@ const FooterRow = styled(Row)`
   ${media.tablet} {
     align-items: flex-start;
     flex-direction: row;
-    min-height: 528px;
-    padding-bottom: 135px;
+    padding-bottom: 50px;
     padding-left: 102px;
     padding-right: 181px;
-    padding-top: 109px;
+    padding-top: 50px;
   }
 `
 
@@ -45,8 +44,6 @@ const FooterSectionHeadline = styled(H5)`
 `
 
 const FooterSectionRow = styled.div`
-  padding-top: 30px;
-
   ${media.tablet} {
     align-items: flex-start;
     display: flex;
@@ -99,6 +96,9 @@ const SocialList = styled(Row)`
   ${media.tablet} {
     justify-content: initial;
     margin-right: 24px;
+    padding-bottom: 58px;
+    padding-left: 102px;
+    padding-top: 28px;
   }
 `
 
@@ -117,6 +117,18 @@ const Legal = styled.div`
 
 const Copyright = styled(Body2)`
   color: ${props => props.theme.lightText};
+`
+
+const LogoWrapper = styled.div`
+  padding-top: 30px;
+  text-align: center;
+  width: 100%;
+
+  ${media.tablet} {
+    padding-left: 102px;
+    padding-top: 109px;
+    text-align: initial;
+  }
 `
 
 const socialData: [
@@ -187,9 +199,11 @@ function Footer(props: Props): React.Node {
 
   return (
     <Wrapper>
-      <FooterRow>
+      <LogoWrapper>
         <Logo color="lightText" />
+      </LogoWrapper>
 
+      <FooterRow>
         <FooterSectionRow>
           <SectionList>
             <li>
@@ -216,9 +230,10 @@ function Footer(props: Props): React.Node {
             </li>
           </SectionList>
         </FooterSectionRow>
-
-        <SocialList as="ul">{socialIcons}</SocialList>
       </FooterRow>
+
+      <SocialList as="ul">{socialIcons}</SocialList>
+
       <Legal>
         <Copyright>&copy; Copyright 2019 El Palote</Copyright>
       </Legal>

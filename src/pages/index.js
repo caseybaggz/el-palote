@@ -109,12 +109,25 @@ const indexPage: React.node = (
     <DescriptionSection
       secondaryHeadline="from"
       headline="family to table"
+      linkText="our menu"
       to="/menu"
     >
       It all started with a life-changing event from Papa. Instead of giving up,
       we asked "How can we keep our tradition of mexican food, and make it
       better for everyone?" The answer was right in front of us the whole time -
       with plants.
+    </DescriptionSection>
+
+    <DescriptionSection
+      direction="left"
+      secondaryHeadline="helping"
+      headline="spread the love"
+      linkText="buy bulk"
+      to="/menu"
+    >
+      Looking for a way to get El Palote meats into your restaurant? Now you can
+      order our meats in bulk from our hands straight to the mouths of your
+      customers - and they'll love you for it.
     </DescriptionSection>
   </Layout>
 )
