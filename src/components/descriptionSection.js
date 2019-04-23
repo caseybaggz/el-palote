@@ -15,12 +15,16 @@ const Wrapper = styled.div`
   padding-bottom: 36px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 36px;
+  padding-top: 48px;
 
   ${media.tablet} {
+    padding-left: ${props => (props.direction === "left" ? 0 : "42px")};
     padding-right: 0;
-    padding-left: 42px;
     padding-top: 200px;
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
   }
 `
 
@@ -31,6 +35,8 @@ const Column = styled.div`
   ${media.tablet} {
     align-items: center;
     display: flex;
+    flex-direction: ${props =>
+      props.direction === "left" ? "row-reverse" : "initial"};
     justify-content: space-between;
   }
 `
@@ -40,6 +46,10 @@ const InnerColumn = styled.div`
 
   ${media.tablet} {
     width: 50%;
+
+    &:first-of-type {
+      width: ${props => (props.direction === "left" ? "35%" : "50%")};
+    }
   }
 `
 
@@ -87,7 +97,9 @@ const Content = styled.div`
 
 type Props = {
   children?: React.Node,
+  direction?: string,
   headline: string,
+  linkText: string,
   secondaryHeadline?: string,
   to: string,
 }
@@ -107,9 +119,9 @@ function DescriptionSection(props: Props): React.Node {
   const { children, secondaryHeadline } = props
 
   return (
-    <Wrapper>
-      <Column>
-        <InnerColumn>
+    <Wrapper direction={props.direction}>
+      <Column direction={props.direction}>
+        <InnerColumn direction={props.direction}>
           <HeadlineWrapper>
             {secondaryHeadline && (
               <SecondaryHealdine>{secondaryHeadline}</SecondaryHealdine>
@@ -131,7 +143,7 @@ function DescriptionSection(props: Props): React.Node {
                 <Body1>{children}</Body1>
               </Content>
             )}
-            <IconLink to={props.to} label="our menu" />
+            <IconLink to={props.to} label={props.linkText} />
           </div>
         </InnerColumn>
 
@@ -150,7 +162,9 @@ function DescriptionSection(props: Props): React.Node {
 }
 
 DescriptionSection.defaultProps = {
+  direction: "",
   headline: "headline",
+  linkText: "linkText",
   secondaryHeadline: "secondaryHeadline",
   to: "/",
 }
