@@ -1,7 +1,7 @@
 // @flow
 
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 import Header from "./header"
 import Footer from "./footer"
@@ -9,9 +9,13 @@ import MobileNav from "./mobileNav"
 import GlobalStyle from "../theme/GlobalStyle"
 import mainTheme from "../theme/mainTheme"
 
+const Wrapper = styled.div`
+  overflow-x: hidden;
+  width: 100%;
+`
+
 const Content = styled.div`
   padding-top: 76.02px;
-  min-height: 80vh;
 `
 
 type Props = {
@@ -20,34 +24,30 @@ type Props = {
 
 function Layout(props: Props): React.Node {
   const [showNav, setShowNav] = React.useState(false)
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
 
   return (
-    <StaticQuery
-      query={graphql`
-        query SiteTitleQuery {
-          site {
-            siteMetadata {
-              title
-            }
-          }
-        }
-      `}
-      render={data => (
-        <ThemeProvider theme={mainTheme}>
-          <>
-            <GlobalStyle />
-            <Header
-              siteTitle={data.site.siteMetadata.title}
-              showMobileNav={setShowNav}
-            />
-            <Content>{props.children}</Content>
-            <Footer />
+    <ThemeProvider theme={mainTheme}>
+      <Wrapper>
+        <GlobalStyle />
+        <Header
+          siteTitle={data.site.siteMetadata.title}
+          showMobileNav={setShowNav}
+        />
+        <Content>{props.children}</Content>
+        <Footer />
 
-            {showNav && <MobileNav onClose={setShowNav} />}
-          </>
-        </ThemeProvider>
-      )}
-    />
+        {showNav && <MobileNav onClose={setShowNav} />}
+      </Wrapper>
+    </ThemeProvider>
   )
 }
 
