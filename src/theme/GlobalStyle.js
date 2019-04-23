@@ -35,15 +35,15 @@ const GlobalStyle = createGlobalStyle`
 
   html,
   body,
-  .root {
+  #__gatsby {
     height: 100%;
-    min-width: 360px;
     width: 100%;
   }
 
   body {
     background-color: ${props => props.theme.white};
     line-height: 1.3;
+    min-width: 360px;
   }
 
   ::-moz-selection,

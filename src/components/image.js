@@ -23,7 +23,7 @@ type Props = {
 function Image(props: Props): React.Node {
   const data = useStaticQuery(graphql`
     query {
-      headerImage: file(relativePath: { eq: "tacos.jpg" }) {
+      headerImage: file(relativePath: { eq: "tacos.png" }) {
         childImageSharp {
           fluid(maxWidth: 300, quality: 90) {
             ...GatsbyImageSharpFluid
