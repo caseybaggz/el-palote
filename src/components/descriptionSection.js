@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   padding-bottom: 36px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 36px;
+  padding-top: 48px;
 
   ${media.tablet} {
     padding-right: 0;

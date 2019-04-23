@@ -9,17 +9,49 @@ import DescriptionSection from "../components/descriptionSection"
 import H4 from "../components/typography/H4"
 import H6 from "../components/typography/H6"
 import media from "../theme/media"
+import TacosImg from "../images/tacos-desktop-min.jpg"
 
 const Feature = styled.div`
+  margin-bottom: 48px;
   position: relative;
   width: 100%;
+
+  &::after {
+    background-color: ${props => props.theme.accent2};
+    bottom: -30px;
+    border-radius: 8px;
+    content: "😍 🌮 😍";
+    display: block;
+    font-size: 24px;
+    left: 0;
+    margin: auto;
+    padding: 12px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    width: 100px;
+  }
+
+  ${media.tablet} {
+    background: url(${TacosImg}) no-repeat center center
+      ${props => props.theme.pureWhite};
+    background-size: cover;
+    height: 90vh;
+    margin-bottom: initial;
+
+    &::after {
+      bottom: -40px;
+      font-size: 36px;
+      width: 150px;
+    }
+  }
 `
 
 const ImageWrapper = styled.div`
   width: 100%;
 
   ${media.tablet} {
-    width: 50%;
+    display: none;
   }
 `
 
@@ -27,7 +59,14 @@ const StatementGroup = styled.div`
   bottom: 87px;
   left: 12px;
   position: absolute;
+  width: 287px;
   z-index: 1;
+
+  ${media.tablet} {
+    bottom: 200px;
+    left: 42px;
+    width: 417px;
+  }
 `
 
 const Statement = styled(H6)`
@@ -37,11 +76,21 @@ const Statement = styled(H6)`
   padding: 12px;
   text-transform: uppercase;
   width: auto;
+
+  ${media.tablet} {
+    padding: 24px;
+    font-size: 34px;
+  }
 `
 
 const Statement2 = styled(Statement)`
   font-size: 34px;
   margin-top: -1px;
+  width: 100%;
+
+  ${media.tablet} {
+    font-size: 48px;
+  }
 `
 
 const indexPage: React.node = (
