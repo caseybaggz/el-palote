@@ -80,8 +80,8 @@ const NavLink = styled(Link)`
   text-transform: uppercase;
 
   &.active {
-    border-left: 4px solide ${props => props.theme.accent2};
     color: ${props => props.theme.accent2};
+    position: relative;
   }
 `
 

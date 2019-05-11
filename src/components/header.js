@@ -2,6 +2,7 @@
 
 import React from "react"
 import styled from "styled-components"
+import { Link } from 'gatsby'
 import Navicon from "./navicon"
 import Logo from "./Logo"
 
@@ -27,7 +28,9 @@ function Header(props: Props): React.Node {
   return (
     <HeaderEl>
       <Navicon onOpenNav={props.showMobileNav} />
-      <Logo />
+      <Link to="/">
+        <Logo />
+      </Link>
     </HeaderEl>
   )
 }
