@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import Body1 from "./typography/Body1"
 
-const LinkItem = styled(Body1)`
+export const LinkItem = styled(Body1)`
   color: ${props => props.theme.accent3};
   display: inline-block;
   text-decoration: none;
