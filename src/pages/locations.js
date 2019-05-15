@@ -5,6 +5,7 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { LinkItem } from "../components/TextLink"
+import Map from "../components/Map"
 import Row from "../components/Row"
 import H4 from "../components/typography/H4"
 import H6 from "../components/typography/H6"
@@ -22,11 +23,11 @@ const MapWrapper = styled.div`
   background: url("") no-repeat center center
     ${props => props.theme.primaryLight};
   background-size: cover;
-  height: 50vh;
+  min-height: 400px;
   width: 100%;
 
   ${media.desktop} {
-    height: 100vh;
+    min-height: 100vh;
     width: 70%;
   }
 `
@@ -86,7 +87,9 @@ const locationsPage: React.node = (
     <SEO title="El Palote Foods | Locations" />
     <div>
       <FeatureRow align="initial" justify="initial" wrap="true">
-        <MapWrapper>map</MapWrapper>
+        <MapWrapper>
+          <Map />
+        </MapWrapper>
         <LocationWrapper>
           <Card>
             <Name>Pleasant Grove</Name>
