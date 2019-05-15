@@ -108,16 +108,14 @@ function Map(props: Props): React.Node {
   const zoom: number = 16
 
   return (
-    <LoadScript googleMapsApiKey="AIzaSyDW88USokSv-S20TTTCNG6geJajoaQJffg">
+    <LoadScript googleMapsApiKey={process.env.GATSBY_MAPS_KEY}>
       <GoogleMap
         mapContainerStyle={containerStyle}
         zoom={zoom}
         center={center}
         options={options}
       >
-        <Marker
-          position={center}
-        />
+        <Marker position={center} />
       </GoogleMap>
     </LoadScript>
   )
