@@ -89,13 +89,13 @@ type Props = {}
 
 function Map(props: Props): React.Node {
   const width: number = useWindowWidth()
-  const isMobile: boolean = React.useMemo(() => width <= 600, [width]);
+  const isMobile: boolean = React.useMemo(() => width <= 600, [width])
   const center: {
     lat: number,
     lng: number,
   } = {
     lat: 32.7559865,
-    lng: -96.6856557,
+    lng: -96.683467,
   }
   const containerStyle: {
     height: string,
@@ -116,10 +116,7 @@ function Map(props: Props): React.Node {
         options={options}
       >
         <Marker
-          position={{
-            lat: 32.7559865,
-            lng: -96.683467,
-          }}
+          position={center}
         />
       </GoogleMap>
     </LoadScript>
