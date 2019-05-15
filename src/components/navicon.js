@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   position: absolute;
   top: 0;
 
-  ${media.tablet} {
+  ${media.desktop} {
     display: none;
   }
 `

@@ -90,6 +90,7 @@ type Props = {
 }
 
 function MobileNav(props: Props): React.Node {
+  const { onClose } = props;
   const data = useStaticQuery(graphql`
     query NavItemsQuery {
       allNavItemsJson {
@@ -103,21 +104,27 @@ function MobileNav(props: Props): React.Node {
       }
     }
   `)
-  const navItems: React.Node = React.useMemo(() => getNavItems(), [data])
+  const [navItems, setNavItems] = React.useState(() => [])
 
-  function getNavItems(): React.Node {
-    return data.allNavItemsJson.edges.map(obj => (
-      <li key={obj.node.id}>
-        <NavLink activeClassName="active" to={obj.node.route}>
-          {obj.node.label}
-        </NavLink>
-      </li>
-    ))
-  }
+  React.useEffect(() => {
+    function getNavItems(): React.Node {
+      return data.allNavItemsJson.edges.map(obj => (
+        <li key={obj.node.id}>
+          <NavLink activeClassName="active" to={obj.node.route}>
+            {obj.node.label}
+          </NavLink>
+        </li>
+      ))
+    }
 
-  function handleClose() {
-    props.onClose(false)
-  }
+    if (!navItems.length) {
+      setNavItems(getNavItems())
+    }
+  }, [data])
+
+  const handleClose = React.useCallback(() => {
+    onClose(false)
+  }, [onClose]);
 
   return (
     <Wrapper>
