@@ -90,7 +90,7 @@ type Props = {
 }
 
 function MobileNav(props: Props): React.Node {
-  const { onClose } = props;
+  const { onClose } = props
   const data = useStaticQuery(graphql`
     query NavItemsQuery {
       allNavItemsJson {
@@ -124,7 +124,7 @@ function MobileNav(props: Props): React.Node {
 
   const handleClose = React.useCallback(() => {
     onClose(false)
-  }, [onClose]);
+  }, [onClose])
 
   return (
     <Wrapper>

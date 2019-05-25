@@ -28,4 +28,6 @@ export default {
   danger: "#FF5252",
 
   border: "#e3dcdc",
+
+  blackAt60: "rgba(28, 23, 20, 0.6)",
 }

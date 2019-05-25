@@ -1,11 +1,16 @@
 [
   {
     "id": "0",
+    "label": "home",
+    "route": "/"
+  },
+  {
+    "id": "1",
     "label": "menu",
     "route": "/menu"
   },
   {
-    "id": "1",
+    "id": "2",
     "label": "locations",
     "route": "/locations"
   }

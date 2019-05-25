@@ -57,6 +57,8 @@ const NavLink = styled(Link)`
   }
 `
 
+// TODO: Add "order online" button
+
 type Props = {
   showMobileNav: () => boolean,
   siteTitle: string,
