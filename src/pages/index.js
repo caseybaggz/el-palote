@@ -93,6 +93,14 @@ const Statement2 = styled(Statement)`
   }
 `
 
+const dessertsImg: {
+  alt: string,
+  name: string
+} = {
+  alt: "desserts",
+  name: "desserts"
+};
+
 const indexPage: React.node = (
   <Layout>
     <SEO title="El Palote Foods | Home" />
@@ -122,6 +130,7 @@ const indexPage: React.node = (
       direction="left"
       secondaryHeadline="helping"
       headline="spread the love"
+      image={dessertsImg}
       linkText="buy bulk"
       to="/menu"
     >

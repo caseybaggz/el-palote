@@ -57,8 +57,6 @@ const NavLink = styled(Link)`
   }
 `
 
-// TODO: Make NavItems component
-
 type Props = {
   showMobileNav: () => boolean,
   siteTitle: string,

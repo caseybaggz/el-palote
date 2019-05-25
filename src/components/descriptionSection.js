@@ -94,12 +94,16 @@ const Content = styled.div`
     max-width: 400px;
   }
 `
-
+type ImageProp = {
+  alt: string,
+  name: string,
+}
 type Props = {
   children?: React.Node,
   direction?: string,
   headline: string,
   linkText: string,
+  image: ImageProp,
   secondaryHeadline?: string,
   to: string,
 }
@@ -107,7 +111,14 @@ type Props = {
 function DescriptionSection(props: Props): React.Node {
   const data = useStaticQuery(graphql`
     query {
-      headerImage: file(relativePath: { eq: "bbq-sandwich.png" }) {
+      bbqImage: file(relativePath: { eq: "bbq-sandwich.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 720, quality: 90) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      dessertsImage: file(relativePath: { eq: "desserts.png" }) {
         childImageSharp {
           fluid(maxWidth: 720, quality: 90) {
             ...GatsbyImageSharpFluid
@@ -131,9 +142,9 @@ function DescriptionSection(props: Props): React.Node {
 
           <ImgWrapper>
             <Img
-              alt="bbq sandwich"
-              fluid={data.headerImage.childImageSharp.fluid}
-              title="El Palote bbq sandwich"
+              alt={props.image.alt}
+              fluid={data[`${props.image.name}Image`].childImageSharp.fluid}
+              title={`El Palote ${props.image.alt}`}
             />
           </ImgWrapper>
 
@@ -150,9 +161,9 @@ function DescriptionSection(props: Props): React.Node {
         <InnerColumn>
           <ImgDesktopWrapper>
             <Img
-              alt=""
-              fluid={data.headerImage.childImageSharp.fluid}
-              title="El Palote "
+              alt={props.image.alt}
+              fluid={data[`${props.image.name}Image`].childImageSharp.fluid}
+              title={`El Palote ${props.image.alt}`}
             />
           </ImgDesktopWrapper>
         </InnerColumn>
@@ -165,6 +176,10 @@ DescriptionSection.defaultProps = {
   direction: "",
   headline: "headline",
   linkText: "linkText",
+  image: {
+    alt: "bbq sandwich",
+    name: "bbq",
+  },
   secondaryHeadline: "secondaryHeadline",
   to: "/",
 }
