@@ -12,6 +12,9 @@ import Body1 from "../components/typography/Body1"
 
 const Wrapper = styled.div`
   background-color: ${props => props.theme.white};
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
   padding: 24px;
 `
 
