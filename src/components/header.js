@@ -3,6 +3,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link, useStaticQuery, graphql } from "gatsby"
+import Button from "./button"
 import Navicon from "./navicon"
 import Logo from "./Logo"
 import media from "../theme/media"
@@ -21,6 +22,7 @@ const HeaderEl = styled.header`
 
   ${media.desktop} {
     justify-content: initial;
+    overflow: hidden;
     padding-left: 36px;
   }
 `
@@ -57,7 +59,25 @@ const NavLink = styled(Link)`
   }
 `
 
-// TODO: Add "order online" button
+const ButtonWrapper = styled.div`
+  bottom: -1px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 1;
+
+  ${media.desktop} {
+    bottom: initial;
+    left: initial;
+    position: absolute;
+    z-index: initial;
+
+    a {
+      padding-bottom: 25px;
+      padding-top: 25px;
+    }
+  }
+`
 
 type Props = {
   showMobileNav: () => boolean,
@@ -103,6 +123,11 @@ function Header(props: Props): React.Node {
         <Logo />
       </Link>
       <NavList>{navItems}</NavList>
+      <ButtonWrapper>
+        <Button as="a" href="https://ordering.app/elpalote/">
+          order online
+        </Button>
+      </ButtonWrapper>
     </HeaderEl>
   )
 }
