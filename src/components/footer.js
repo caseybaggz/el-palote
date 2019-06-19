@@ -14,6 +14,11 @@ import media from "../theme/media"
 
 const Wrapper = styled.footer`
   background-color: rgba(28, 23, 20, 0.95);
+  padding-bottom: 52px;
+
+  ${media.tablet} {
+    padding-bottom: initial;
+  }
 `
 
 const FooterRow = styled(Row)`
