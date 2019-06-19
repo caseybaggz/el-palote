@@ -8,6 +8,7 @@ module.exports = {
     description: `The official site for the first authentic vegan mexican food family-owned restaurant in the world, based out of Dallas, Texas.`,
     author: `@elpalote`,
     avatar: "",
+    siteUrl: "https://www.elpalote.com"
   },
   plugins: [
     // this (optional) plugin enables Progressive Web App + Offline functionality
